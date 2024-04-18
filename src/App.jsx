@@ -7,10 +7,14 @@ import { useRef } from 'react'
 
 function App() {
   const [count, setCount] = useState(0);
+  const [facingMode,setFacingMode]=useState('user')
   const image=useRef(null);
 
   const handleOnChange=(e)=>{
     console.log(image.current.getScreenshot())
+  }
+  const switchCamera=()=>{
+    setFacingMode((state)=>state=='user' ? 'environment':'user')
   }
 
   return (
@@ -21,11 +25,12 @@ function App() {
         // ref={webcamRef}
         ref={image}
         mirrored={true} // Mirror the video for front camera
-        style={{ width: '100px', height: 'auto' }}
+        style={{ width: '300px', height: 'auto' }}
         screenshotFormat="image/jpeg"
-        videoConstraints={{ facingMode: 'environment',aspectRatio:'' }}
+        videoConstraints={{ facingMode: facingMode,aspectRatio:16/9 }}
         onClick={handleOnChange}
-          />
+        />
+        <button onClick={switchCamera}>switch camera</button>
     </>
   )
 }
