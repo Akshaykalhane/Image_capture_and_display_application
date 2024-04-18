@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <h2>Camera App</h2>
-      {/* <Webcam 
+      <Webcam 
         audio={false}
         // ref={webcamRef}
         ref={image}
@@ -29,7 +29,7 @@ function App() {
         screenshotFormat="image/jpeg"
         videoConstraints={{ facingMode: facingMode,aspectRatio:16/9 }}
         onClick={handleOnChange}
-        /> */}
+        />
         <button onClick={switchCamera}>switch camera</button>
     </>
   )
