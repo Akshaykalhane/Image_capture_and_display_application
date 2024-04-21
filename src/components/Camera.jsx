@@ -112,10 +112,9 @@ function CameraComponent({addImage}) {
         <button className='rotate-btn' onClick={switchCamera}><img src="/rotate.png" alt="rotate" className='rotate-img' /></button>
         <Webcam
           audio={false}
-          // ref={webcamRef}
           ref={image}
-          mirrored={false} // Mirror the video for front camera
-          style={{ maxWidth: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          mirrored={false} 
+          style={{ maxWidth: 'auto', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: facingMode, aspectRatio: 16 / 9 }}
           imageSmoothing={true}

@@ -104,3 +104,19 @@ body{
     background-blend-mode: lighten;
   }
   
+  @media screen and (max-width:399px) {
+    .camera-container{
+        padding: 15px;
+    }
+    .camera-window{
+        height: 100%;
+    }
+    .camera-controls{
+        /* background-color: green; */
+        gap: 10px;
+    }
+    .capture-btn {
+        width: 40px;
+        height: 40px;
+    }
+  }
