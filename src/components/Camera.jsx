@@ -40,30 +40,17 @@ function CameraComponent({addImage}) {
     const { videoWidth, videoHeight } = image.current.video;
     setPause(true);
 
-    // Calculate the dimensions of the cropped area based on the zoom level
     let cropWidth = videoWidth / zoomLevel;
     let cropHeight = videoHeight / zoomLevel;
     let cropX = (videoWidth - cropWidth) / 2;
     let cropY = (videoHeight - cropHeight) / 2;
 
-    // if (ratio === 1) {
-    //   // console.log(ratio + 'is this')
-    //   if (videoWidth > videoHeight) {
-    //     cropWidth = (videoHeight * 3) / 4;
-    //     cropX = (videoWidth - cropWidth) / 2;
-    //   } else {
-    //     cropHeight = (videoWidth * 3) / 4;
-    //     cropY = (videoHeight - cropHeight) / 2;
-    //   }
-    // }
 
-    // Create a canvas to crop the image
     const canvas = document.createElement('canvas');
     canvas.width = cropWidth;
     canvas.height = cropHeight;
     const ctx = canvas.getContext('2d');
 
-    // Draw the zoomed portion of the image onto the canvas
     ctx.drawImage(
       image.current.video,
       cropX,
@@ -76,15 +63,11 @@ function CameraComponent({addImage}) {
       cropHeight
     );
 
-    // Convert the canvas content to a data URL
     const croppedImageSrc = canvas.toDataURL();
     console.log(croppedImageSrc)
     addImage(croppedImageSrc);
     setCapturedImages([...capturedImages,croppedImageSrc]);
 
-    // Add the cropped image to the captured images array
-    // setCapturedImages([...capturedImages, croppedImageSrc]);
-    // setCameraPaused(true);
     setTimeout(()=>{
       setPause(false)
     },1000)

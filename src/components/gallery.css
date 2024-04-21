@@ -95,7 +95,7 @@ background-color: #f1f1f1;
     border-radius: 3px;
     box-shadow: 0px 0px 2px #9e9a9a;
     background-color: #ffffff44;
-    z-index: 1000000000000000000000000;
+    z-index: 10000;
 }
 .inside-delete{
     width: 300px;
@@ -143,9 +143,17 @@ background-color: #f1f1f1;
 
 @media screen and (max-width:399px) {
     .gallery-container{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }    
+    .zoom-in-image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        /* background-color: red; */
+    }
     .zoom-in-image img{
         max-width: 310px;
+        margin-bottom: 10px;
     }
 }
