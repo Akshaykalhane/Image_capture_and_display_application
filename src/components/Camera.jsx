@@ -33,7 +33,6 @@ function CameraComponent({addImage}) {
     setRatio({width,height});
   }
 
-  
 
   const capturePicture = (e) => {
     // console.log(image.current.getScreenshot())
@@ -114,7 +113,7 @@ function CameraComponent({addImage}) {
           audio={false}
           ref={image}
           mirrored={false} 
-          style={{ maxWidth: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          style={{ width: '100%', height: '100%', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: facingMode, aspectRatio: 16/9 }}
           imageSmoothing={true}
