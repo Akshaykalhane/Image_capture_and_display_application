@@ -114,9 +114,9 @@ function CameraComponent({addImage}) {
           audio={false}
           ref={image}
           mirrored={false} 
-          style={{ maxWidth: 'auto', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          style={{ maxWidth: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
           screenshotFormat="image/jpeg"
-          videoConstraints={{ facingMode: facingMode, aspectRatio: 16 / 9 }}
+          videoConstraints={{ facingMode: facingMode, aspectRatio: 16/9 }}
           imageSmoothing={true}
         />
       </div>
