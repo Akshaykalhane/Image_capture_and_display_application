@@ -1,0 +1,137 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-gallery-container{
+    padding: 10px;
+}
+.main-gallery-container > h2{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.gallery-container{
+    /* border: 1px solid red; */
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 1rem;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+
+.gallery-box{
+    /* width: 40px; */
+    height: 130px;
+    /* padding: 30px; */
+    /* border: 1px solid green; */
+    /* box-shadow: 0px 0px 5px silver; */
+    /* border: 2px solid red; */
+    /* overflow: hidden; */
+    cursor: pointer;
+}
+.gallery-box img{
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.gallery-box:hover img {
+    transform: scale(1.1);
+  }
+
+.zoom-in-image{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 12px;
+z-index: 100;
+background-color: #f1f1f1;
+}
+
+.close-btn{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    outline: none;
+    border: none;
+    background-color: #0a0a0a;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.delete-box{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px #9e9a9a;
+    background-color: #ffffff44;
+    z-index: 1000000000000000000000000;
+}
+.inside-delete{
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.inside-delete p{
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.inside-delete button{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 2px;
+    background-color: rgb(80, 80, 173);
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 20px;
+}
+
+.inside-delete .no-btn{
+    margin-left: 20px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid silver;
+}
+
+.back-btn{
+    background-color: rgb(62, 109, 238);
+    color: #fff;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.no-data{
+   font-size: 20px;
+   text-transform: capitalize;
+   margin-top: 20px;
+}

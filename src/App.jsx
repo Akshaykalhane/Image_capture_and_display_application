@@ -4,35 +4,53 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Webcam from 'react-webcam'
 import { useRef } from 'react'
+import CameraComponent from './components/Camera';
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import Gallery from './components/Gallery'
+import Notfound from './components/notfound'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [facingMode,setFacingMode]=useState('user')
-  const image=useRef(null);
+  const [capturedImages,setCapturedImages] = useState([]);
 
-  const handleOnChange=(e)=>{
-    console.log(image.current.getScreenshot())
-  }
-  const switchCamera=()=>{
-    setFacingMode((state)=>state=='user' ? 'environment':'user')
+  const addImage=(img_url)=>{
+    let id = capturedImages.length+1;
+    const state = {
+      id,
+      img_url
+    }
+    setCapturedImages([...capturedImages,state]);
+  }  
+
+  const deleteImage=(id)=>{
+    const data = capturedImages.filter((item)=>item.id!==id);
+    setCapturedImages(data);
   }
 
   return (
     <>
-      <h2>Camera App</h2>
-      <Webcam 
-        audio={false}
-        // ref={webcamRef}
-        ref={image}
-        mirrored={true} // Mirror the video for front camera
-        style={{ width: '300px', height: 'auto' }}
-        screenshotFormat="image/jpeg"
-        videoConstraints={{ facingMode: facingMode,aspectRatio:16/9 }}
-        onClick={handleOnChange}
-        />
-        <button onClick={switchCamera}>switch camera</button>
+      {/* <h2>Camera App</h2>
+      <div style={{ overflow: 'hidden' }}>
+
+      </div> */}
+      {/* <button onClick={capturePicture}>capture</button>
+      <button onClick={switchCamera} className='camera'>switch camera</button>
+      <button onClick={zoomIn}>zoom in</button>
+      <button onClick={zoomOut}>zoom out</button> */}
+      
+      {/* <div>
+        {capturedImages && capturedImages.map((img)=>{
+          return <img key={img} src={img} />
+        })}
+      </div> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<CameraComponent addImage={addImage}  />} />
+          <Route path='/gallery' element={<Gallery capturedImages={capturedImages} deleteImage={deleteImage} />} />
+          <Route path='*' element={<Notfound />}/>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
