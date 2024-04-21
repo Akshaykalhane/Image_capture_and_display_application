@@ -113,7 +113,7 @@ function CameraComponent({addImage}) {
           audio={false}
           ref={image}
           mirrored={false} 
-          style={{ width: '100%', height: '100%', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          style={{ width: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: facingMode, aspectRatio: 16/9 }}
           imageSmoothing={true}
@@ -128,7 +128,7 @@ function CameraComponent({addImage}) {
         <button className="zoom-btn" onClick={zoomOut}>-</button>
         <button className="capture-btn" title="click here to capture image" onClick={capturePicture}></button>
         <button className="zoom-btn" onClick={zoomIn}>+</button>
-        <select name="" id="" className="aspect-ratio" onChange={handleAspectRatio} value={ratio.width+':'+ratio.height}>
+        <select name="" id="" className="aspect-ratio" onChange={handleAspectRatio} value={ratio.width/ratio.height}>
           <option value="16:9">16:9</option>
           <option value="4:3">4:3</option>
           <option value="1:1">1:1</option>
