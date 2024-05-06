@@ -9,14 +9,14 @@ function CameraComponent({addImage}) {
   const [facingMode, setFacingMode] = useState('user')
   const [ratio,setRatio]=useState({width:16,height:9});
   const [capturedImages,setCapturedImages] = useState([]);
-  const [pause,setPause] = useState(false)
+  const [pause,setPause] = useState(false);
   const [hasError,setError]=useState(false);
   const image = useRef(null);
 
   useEffect(()=>{
     const checkBrowserWebCamera=()=>{
       if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-        setError(true)
+        setError(true);
       }
     }
     checkBrowserWebCamera();
@@ -25,9 +25,10 @@ function CameraComponent({addImage}) {
   const handleAspectRatio = (e) =>{
     const { value } = e.target;
     // setRatio(value);
-    console.log(value)
+    console.log(value);
     const [width,height] = value.split(':').map(Number);
     image.current.video.srcObject.getVideoTracks().forEach(track => {
+      console.log(image.current.video.srcObject.getVideoTracks())
       track.applyConstraints({ aspectRatio: width / height });
     });
     setRatio({width,height});
@@ -35,10 +36,11 @@ function CameraComponent({addImage}) {
 
 
   const capturePicture = (e) => {
-    // console.log(image.current.getScreenshot())
     const imageSrc = image.current.getScreenshot();
     const { videoWidth, videoHeight } = image.current.video;
     setPause(true);
+
+    console.log(image.current)
 
     let cropWidth = videoWidth / zoomLevel;
     let cropHeight = videoHeight / zoomLevel;

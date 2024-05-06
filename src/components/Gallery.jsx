@@ -1,29 +1,37 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { useState } from 'react';
 import { Link} from 'react-router-dom';
 import './gallery.css';
+import { gallaryReducer ,initialState} from './reducer';
+
+
 
 function Gallery({ capturedImages ,deleteImage}) {
+ 
   const [isZoomed,setIsZoomed]=useState(false);
   const [zoomedImage,setZoomedImage]=useState(null);
-  const [isDelete,setDelete]=useState(false)
-
+  const [isDelete,setDelete]=useState(false);
+  const [state,dispatch]=useReducer(gallaryReducer,initialState)
   const setZoomedIn=(image_url)=>{
-    setIsZoomed(true);
-    setZoomedImage(image_url);
-    console.log(image_url)
+    // setIsZoomed(true);
+    // setZoomedImage(image_url);
+    dispatch({type:'set_zoomedIn',payload:{img_url:image_url}})
+    
   }
+  console.log(state);
 
   const setZoomedOut =()=>{
-    setIsZoomed(false);
-    setZoomedImage(null);
+    dispatch({type:'set_zoomout'})
+    // setIsZoomed(false);
+    // setZoomedImage(null);
   }
 
   const handleDelete=()=>{
-    deleteImage(zoomedImage.id);
-    setIsZoomed(false);
-    setZoomedImage(null);
-    setDelete(false)
+    deleteImage(state.zoomedImage.id);
+    // setIsZoomed(false);
+    // setZoomedImage(null);
+    // setDelete(false)
+    dispatch({type:'delete_img'})
   }
 
   return (<>
@@ -53,19 +61,21 @@ function Gallery({ capturedImages ,deleteImage}) {
           </div>
           )
       }
-      {isZoomed && (
+      {state.isZoomed && (
         <div className='zoom-in-image'>
-          <img src={zoomedImage.img_url} alt="image" />
-          <button onClick={()=>setDelete(true)} className='back-btn'>Delete</button>
+          <img src={state.zoomedImage.img_url} alt="image" />
+          {/* <button onClick={()=>setDelete(true)} className='back-btn'>Delete</button> */}
+          <button onClick={()=>dispatch({type:'set_delete'})} className='back-btn '>Delete</button>
           <button className='close-btn' onClick={setZoomedOut}>X</button>
         </div>
       )}
-      {isDelete && (
+      {state.isDelete && (
         <div className='delete-box'>
           <div className="inside-delete">
           <p>Are you sure you want delete this image ?</p>
           <button onClick={handleDelete}>yes</button>
-          <button className='no-btn' onClick={()=>setDelete(false)}>no</button>
+          {/* <button className='no-btn' onClick={()=>setDelete(false)}>no</button> */}
+           <button className='no-btn' onClick={()=>dispatch({type:'cancel_delete'})}>no</button>
           </div>
         </div>
       )}

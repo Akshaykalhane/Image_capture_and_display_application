@@ -10,8 +10,9 @@ import Gallery from './components/Gallery'
 import Notfound from './components/notfound'
 
 function App() {
-  const [capturedImages,setCapturedImages] = useState([]);
 
+  const [capturedImages,setCapturedImages] = useState([]);
+  
   const addImage=(img_url)=>{
     let id = capturedImages.length+1;
     const state = {
