@@ -106,6 +106,7 @@ body{
     border: 2px solid #d1d1d1;
     border-radius: 5px;
     background-color: #e4ebc2;
+    background-color: transparent;
 }
   .zoom-btn{
     padding: 10px;
@@ -127,6 +128,10 @@ body{
     /* border: 1px solid silver; */
     border: none;
     background-color: transparent;
+    color: white;
+  }
+  .aspect-ratio option{
+    color: black;
   }
   
   .rotate-img{
@@ -142,12 +147,18 @@ body{
     .camera-container{
         padding: 15px;
     }
+    
     .camera-window{
         height: 100vh;
+        border-radius: 10px;
+    }
+    .camera-window > buttton{
+      top: 30px;
+      left: 30px;
     }
     .camera-controls{
         /* background-color: green; */
-        gap: 20px;
+        gap: 10px;
         bottom: 10%;
     }
     .capture-btn {
@@ -159,6 +170,14 @@ body{
       height: 20px;
     }
     .gallery-btn img{
-      width: 20px;
+      width: 39px;
+    }
+    .aspect-ratio{
+      padding: 5px;
+      background-color: transparent;
+      color: black;
+    }
+    .select-group{
+      background-color: transparent;
     }
   }

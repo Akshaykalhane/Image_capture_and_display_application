@@ -100,7 +100,7 @@ function CameraComponent({addImage}) {
           audio={false}
           ref={image}
           mirrored={false} 
-          style={{ width: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          style={{ width: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none',borderRadius:'5px' }}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: facingMode, aspectRatio: ratio.width/ratio.height }}
           imageSmoothing={true}
