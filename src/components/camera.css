@@ -152,9 +152,10 @@ body{
         height: 100vh;
         border-radius: 10px;
     }
-    .camera-window > buttton{
+    .camera-window > button{
       top: 50px;
-      left: 50px;
+      left: 20px;
+      /* border: 2px solid red; */
     }
     .camera-controls{
         /* background-color: green; */
