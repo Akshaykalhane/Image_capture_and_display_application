@@ -8,6 +8,9 @@ import CameraComponent from './components/Camera';
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Gallery from './components/Gallery'
 import Notfound from './components/notfound'
+import { AnimatePresence } from 'framer-motion'
+
+// import Transition from './components/Transition'
 
 function App() {
 
@@ -44,11 +47,13 @@ function App() {
         })}
       </div> */}
       <BrowserRouter>
+      <AnimatePresence mode='wait'>
         <Routes>
           <Route path='/' element={<CameraComponent addImage={addImage}  />} />
           <Route path='/gallery' element={<Gallery capturedImages={capturedImages} deleteImage={deleteImage} />} />
           <Route path='*' element={<Notfound />}/>
         </Routes>
+      </AnimatePresence>
       </BrowserRouter>
     </>
   )

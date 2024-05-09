@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Link} from 'react-router-dom';
 import './gallery.css';
 import { gallaryReducer ,initialState} from './reducer';
+import Transition from './Transition';
+
 
 
 
@@ -35,8 +37,9 @@ function Gallery({ capturedImages ,deleteImage}) {
   }
 
   return (<>
+  <Transition>
     <div className="main-gallery-container">
-      <Link to='/'>
+      <Link to='/' style={{textDecoration:'none'}}>
       <button className='back-btn'>Back</button>
       </Link>
       {
@@ -65,8 +68,10 @@ function Gallery({ capturedImages ,deleteImage}) {
         <div className='zoom-in-image'>
           <img src={state.zoomedImage.img_url} alt="image" />
           {/* <button onClick={()=>setDelete(true)} className='back-btn'>Delete</button> */}
-          <button onClick={()=>dispatch({type:'set_delete'})} className='back-btn '>Delete</button>
-          <button className='close-btn' onClick={setZoomedOut}>X</button>
+          <button onClick={()=>dispatch({type:'set_delete'})} className='back-btn '><img src="/icons8-delete-144.png" alt="" /> Delete</button>
+          <button className='close-btn' onClick={setZoomedOut}>
+            <img src="/icons8-close-240.png" alt="" />
+          </button>
         </div>
       )}
       {state.isDelete && (
@@ -80,6 +85,7 @@ function Gallery({ capturedImages ,deleteImage}) {
         </div>
       )}
     </div>
+    </Transition>
   </>
   )
 }

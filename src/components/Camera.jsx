@@ -3,6 +3,7 @@ import { useState,useRef ,useEffect} from 'react';
 import Webcam from 'react-webcam';
 import {Link} from 'react-router-dom';
 import './camera.css';
+import Transition from './Transition';
 
 function CameraComponent({addImage}) {
   const [zoomLevel, setZoomLevel] = useState(1)
@@ -12,6 +13,7 @@ function CameraComponent({addImage}) {
   const [pause,setPause] = useState(false);
   const [hasError,setError]=useState(false);
   const image = useRef(null);
+  
 
   useEffect(()=>{
     const checkBrowserWebCamera=()=>{
@@ -87,7 +89,7 @@ function CameraComponent({addImage}) {
   }
 
   return (<>
-    <div className="camera-container">
+  <Transition>    <div className="camera-container">
       {hasError ? (<div>
           <p>Sorry, your browser doesn't support webcam access.</p>
           <p>Please use a different browser or enable webcam access in your current browser.</p>
@@ -98,31 +100,44 @@ function CameraComponent({addImage}) {
           audio={false}
           ref={image}
           mirrored={false} 
-          style={{ maxWidth: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
+          style={{ width: '100%', height: 'auto', transform: `scale(${zoomLevel})`,filter: pause ? 'grayscale(100%)' : 'none', }}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: facingMode, aspectRatio: ratio.width/ratio.height }}
           imageSmoothing={true}
         />
       </div>
+      
       <div className="camera-controls">
         <Link to='/gallery'>
         <button className="gallery-btn">
           <img src="/icons8-image-96.png" alt="gallery" />
         </button>
         </Link>
-        <button className="zoom-btn" onClick={zoomOut}>-</button>
-        <button className="capture-btn" title="click here to capture image" onClick={capturePicture}></button>
-        <button className="zoom-btn" onClick={zoomIn}>+</button>
+        <button className="zoom-btn" onClick={zoomOut}>
+          <img src="/icons8-zoom-out-100.png" alt="" />
+        </button>
+        <button className="capture-btn" title="click here to capture image" onClick={capturePicture}>
+          <img src="/icons8-aperture-100.png" alt="" />
+        </button>
+        <button className="zoom-btn" onClick={zoomIn}>
+          <img src="/icons8-zoom-in-96.png" alt="" />
+        </button>
+        <div className="select-group">
+
         <select name="" id="" className="aspect-ratio" onChange={handleAspectRatio} value={ratio.width+':'+ratio.height}>
           <option value="16:9">16:9</option>
           <option value="4:3">4:3</option>
           <option value="1:1">1:1</option>
         </select>
+        </div>
       </div>
+      
       </>
       ) }
       
     </div>
+    </Transition>
+
   </>
   )
 }
