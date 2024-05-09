@@ -147,7 +147,6 @@ body{
     .camera-container{
         padding: 10px;
     }
-    
     .camera-window{
         height: 100vh;
         border-radius: 10px;
@@ -159,12 +158,12 @@ body{
     }
     .camera-controls{
         /* background-color: green; */
-        gap: 10px;
+        gap: 15px;
         bottom: 5%;
     }
     .capture-btn {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
     .zoom-btn img{
       width: 20px;
@@ -176,7 +175,7 @@ body{
     .aspect-ratio{
       padding: 5px;
       background-color: transparent;
-      color: black;
+      color: rgb(233, 226, 226);
     }
     .select-group{
       background-color: transparent;
