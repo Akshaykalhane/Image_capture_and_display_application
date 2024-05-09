@@ -150,13 +150,13 @@ body{
         padding: 10px;
     }
     .camera-window{
-        /* height: 100vh; */
+        height: 100vh;
         border-radius: 10px;
     }
     .camera-window > button{
       top: 50px;
       left: 20px;
-      border: 2px solid red;
+      /* border: 2px solid red; */
     }
     .camera-controls{
         /* background-color: green; */
@@ -164,9 +164,9 @@ body{
         bottom: 5%;
     }
     .capture-btn {
-        width: 50px;
-        height: 50px;
-        border: 2px solid red;
+        width: 70px;
+        height: 70px;
+        /* border: 2px solid red; */
     }
     .zoom-btn{
       padding: 5px;
