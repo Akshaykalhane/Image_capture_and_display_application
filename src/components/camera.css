@@ -160,7 +160,7 @@ body{
     .camera-controls{
         /* background-color: green; */
         gap: 10px;
-        bottom: 10%;
+        bottom: 5%;
     }
     .capture-btn {
         width: 40px;
