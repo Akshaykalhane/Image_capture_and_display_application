@@ -155,7 +155,7 @@ body{
     .camera-window > button{
       top: 50px;
       left: 20px;
-      /* border: 2px solid red; */
+      border: 2px solid red;
     }
     .camera-controls{
         /* background-color: green; */
